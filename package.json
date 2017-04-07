@@ -1,0 +1,11 @@
+{
+  "name": "gittk",
+  "version": "1.0.0",
+  "description": "Git workflow checklist application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JW Garrison",
+  "license": "MIT"
+}
