@@ -6,7 +6,7 @@ import {
 } from 'graphql';
 
 import mongoose from 'mongoose';
-import { UserType } from '../whatever/UserType';
+import UserType from '../UserType';
 import OrganizationType from '../OrganizationType';
 import ProjectType from '../ProjectType';
 import WorkflowType from '../WorkflowType';
