@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import '../models';
 import { MONGO_URL } from '../constants';
 
 mongoose.Promise = global.Promise;
