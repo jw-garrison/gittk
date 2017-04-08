@@ -1,12 +1,14 @@
 import 'babel-polyfill';
 import express from 'express';
-import Middleware from './config/middlewares';
+import Middleware from './middlewares';
+import Static from './static';
 import Router from './routes';
-import PORT from './constants';
+import { PORT } from './constants';
 
 const app = express();
 
-Middleware(app, express);
+Middleware(app);
+Static(app, express);
 Router(app);
 
 app.listen(PORT, (err) => {
