@@ -19,8 +19,10 @@ const UserType = new GraphQLObjectType({
     password: { type: GraphQLString },
     organizations: {
       type: new GraphQLList(OrganizationType),
-      resolve(parentValue) {
-        return User.findOrgs(parentValue.id);
+      async resolve(parentValue) {
+        const orgs = await User.findOrgs(parentValue.id);
+        console.log(orgs);
+        return orgs;
       },
     },
     projects: {

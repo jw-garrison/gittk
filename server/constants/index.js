@@ -10,3 +10,6 @@ export const MONGO_URL = `mongodb://${DB_USER}:${DB_PASS}@ds157040.mlab.com:5704
 
 export const PORT = 8000;
 export const PUBLIC_PATH = path.join(__dirname, '../../../public');
+
+export const ROOT_QUERY_TYPE = 'RootQueryType';
+export const ROOT_MUTATION_TYPE = 'RootMutationType';

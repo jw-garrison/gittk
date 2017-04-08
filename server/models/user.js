@@ -13,12 +13,28 @@ const UserSchema = new Schema({
   }],
 });
 
-UserSchema.statics.findOrgs = id => this.findById(id)
-  .populate('organization')
-  .then(user => user.organization);
+UserSchema.statics.findOrgs = function findOrgs(id) {
+  return this.findById(id)
+    .populate('organizations')
+    .then(user => user.organizations);
+};
 
-UserSchema.statics.findProjects = id => this.findById(id)
-  .populate('project')
-  .then(user => user.project);
+UserSchema.statics.findProjects = function findProjects(id) {
+  return this.findById(id)
+    .populate('project')
+    .then(user => user.project);
+};
+
+UserSchema.statics.addOrgnization = function addOrgnization(id, title) {
+  const Organization = mongoose.model('organization');
+
+  return this.findById(id)
+    .then((user) => {
+      const newOrg = new Organization({ title });
+      user.organizations.push(newOrg);
+      return Promise.all([user.save(), newOrg.save()])
+        .then(([user, newOrg]) => newOrg);
+    });
+};
 
 mongoose.model('user', UserSchema);

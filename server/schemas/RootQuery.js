@@ -9,6 +9,7 @@ import UserType from './UserType';
 import OrganizationType from './OrganizationType';
 import ProjectType from './ProjectType';
 import WorkflowType from './WorkflowType';
+import { ROOT_QUERY_TYPE } from '../constants';
 
 const User = mongoose.model('user');
 const Organization = mongoose.model('organization');
@@ -16,7 +17,7 @@ const Project = mongoose.model('project');
 const Workflow = mongoose.model('workflow');
 
 const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
+  name: ROOT_QUERY_TYPE,
   fields: () => ({
     user: {
       type: UserType,

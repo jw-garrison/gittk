@@ -10,6 +10,7 @@ import UserType from '../UserType';
 import OrganizationType from '../OrganizationType';
 import ProjectType from '../ProjectType';
 import WorkflowType from '../WorkflowType';
+import { ROOT_MUTATION_TYPE } from '../../constants';
 
 const User = mongoose.model('user');
 const Organization = mongoose.model('organization');
@@ -17,7 +18,7 @@ const Project = mongoose.model('project');
 const Workflow = mongoose.model('workflow');
 
 const Mutations = new GraphQLObjectType({
-  name: 'Mutation',
+  name: ROOT_MUTATION_TYPE,
   fields: {
     addUser: {
       type: UserType,
@@ -59,6 +60,17 @@ const Mutations = new GraphQLObjectType({
       async resolve(parentValue, { gitCommand, description }) {
         const newWorkflow = await (new Workflow({ gitCommand, description })).save();
         return newWorkflow;
+      },
+    },
+    addUserToOrg: {
+      type: OrganizationType,
+      args: {
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
+      },
+      async resolve(parentValue, { id, title }) {
+        const addedOrg = await User.addOrgnization(id, title);
+        return addedOrg;
       },
     },
   },
