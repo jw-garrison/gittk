@@ -4,8 +4,24 @@
   "description": "Git workflow checklist application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon dist/server/index.js register --require babel-polyfill",
+    "build": "babel server -d dist/server -w",
+    "test": "mocha --compilers js:babel-register"
   },
   "author": "JW Garrison",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "babel-polyfill": "^6.23.0",
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.3.3",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0"
+  }
 }
