@@ -6,7 +6,7 @@ import {
 } from 'graphql';
 
 import mongoose from 'mongoose';
-import UserType from '../UserType';
+import { UserType } from '../whatever/UserType';
 import OrganizationType from '../OrganizationType';
 import ProjectType from '../ProjectType';
 import WorkflowType from '../WorkflowType';
@@ -25,8 +25,9 @@ const Mutations = new GraphQLObjectType({
         username: { type: GraphQLString },
         password: { type: GraphQLString },
       },
-      resolve(parentValue, { username, password }) {
-        return (new User({ username, password })).save();
+      async resolve(parentValue, { username, password }) {
+        const newUser = await (new User({ username, password })).save();
+        return newUser;
       },
     },
     addOrgnization: {
@@ -34,8 +35,9 @@ const Mutations = new GraphQLObjectType({
       args: {
         title: { type: GraphQLString },
       },
-      resolve(parentValue, { title }) {
-        return (new Organization({ title })).save();
+      async resolve(parentValue, { title }) {
+        const newOrg = await (new Organization({ title })).save();
+        return newOrg;
       },
     },
     addProject: {
@@ -43,8 +45,9 @@ const Mutations = new GraphQLObjectType({
       args: {
         title: { type: GraphQLString },
       },
-      resolve(parentValue, { title }) {
-        return (new Project({ title })).save();
+      async resolve(parentValue, { title }) {
+        const newProject = await (new Project({ title })).save();
+        return newProject;
       },
     },
     addWorkflow: {
@@ -53,8 +56,9 @@ const Mutations = new GraphQLObjectType({
         gitCommand: { type: GraphQLString },
         description: { type: GraphQLString },
       },
-      resolve(parentValue, { gitCommand, description }) {
-        return (new Workflow({ gitCommand, description })).save();
+      async resolve(parentValue, { gitCommand, description }) {
+        const newWorkflow = await (new Workflow({ gitCommand, description })).save();
+        return newWorkflow;
       },
     },
   },
