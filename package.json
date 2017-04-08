@@ -4,9 +4,9 @@
   "description": "Git workflow checklist application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/server/index.js register --require babel-polyfill",
+    "start": "nodemon dist/server/index.js",
     "build": "babel server -d dist/server -w",
-    "test": "snyk test && mocha --compilers js:babel-register"
+    "test": "mocha --compilers js:babel-register"
   },
   "author": "JW Garrison",
   "license": "MIT",
@@ -14,8 +14,12 @@
     "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.2",
+    "express-graphql": "^0.6.4",
+    "graphql": "^0.9.2",
     "helmet": "^3.5.0",
+    "mongoose": "^4.9.3",
     "morgan": "^1.8.1"
   },
   "devDependencies": {
