@@ -1,2 +1,3 @@
 import 'babel-polyfill';
-import './server.js';
+import './database';
+import './server';
