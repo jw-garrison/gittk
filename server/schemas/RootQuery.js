@@ -21,29 +21,33 @@ const RootQuery = new GraphQLObjectType({
     user: {
       type: UserType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, { id }) {
-        return User.findById(id);
+      async resolve(parentValue, { id }) {
+        const user = await User.findById(id);
+        return user;
       },
     },
     organization: {
       type: OrganizationType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, { id }) {
-        return Organization.findById(id);
+      async resolve(parentValue, { id }) {
+        const org = await Organization.findById(id);
+        return org;
       },
     },
     project: {
       type: ProjectType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, { id }) {
-        return Project.findById(id);
+      async resolve(parentValue, { id }) {
+        const project = await Project.findById(id);
+        return project;
       },
     },
     workflow: {
       type: WorkflowType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, { id }) {
-        return Workflow.findById(id);
+      async resolve(parentValue, { id }) {
+        const workflow = await Workflow.findById(id);
+        return workflow;
       },
     },
   }),
