@@ -13,6 +13,6 @@ app.listen(PORT, (err) => {
   if (err) {
     console.error('Cannot start server: ', err);
   } else {
-    console.log(`Listening to port : ${PORT.PORT}`);
+    console.log(`Listening to port : ${PORT}`);
   }
 });
